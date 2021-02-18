@@ -3,3 +3,9 @@ html {
     width: 100%;
     background: #2a2842;
 }
+
+@media screen and (max-width: 992px) {
+    html{
+        width: fit-content;
+    }
+}

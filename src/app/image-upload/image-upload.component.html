@@ -1,9 +1,4 @@
 <p-fileUpload name="file-uploader"
               (onSelect)="onUpload($event)"
               accept="image/*">
-    <ng-template pTemplate="content">
-        <div *ngIf="uploadedFile">
-            {{uploadedFile.name}} - {{uploadedFile.size}} bytes
-        </div>
-    </ng-template>
 </p-fileUpload>

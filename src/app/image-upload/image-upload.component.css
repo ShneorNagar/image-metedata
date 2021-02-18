@@ -21,3 +21,12 @@ text-align: center;
 ::ng-deep .p-fileupload-files .ng-star-inserted{
     margin-top: -2%;
 }
+
+@media screen and (max-width: 992px) {
+    ::ng-deep .p-fileupload{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+}
