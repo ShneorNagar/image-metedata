@@ -1,7 +1,3 @@
-.progressbar-container{
-    /*width: 75%;*/
-}
-
-.reports-container{
-    /*width: 50%;*/
+::ng-deep .p-progressbar-determinate .p-progressbar-label{
+    color: transparent;
 }

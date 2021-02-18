@@ -14,7 +14,7 @@ export class ImageUploadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  uploadedFiles: any[] = [];
+  uploadedFile: any;
 
   onUpload(event) {
     this.reportCreatorService.createReports(event.files[0]);

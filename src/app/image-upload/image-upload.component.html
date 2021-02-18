@@ -1,18 +1,9 @@
-<!--<img #img src="{{imageInput.value}}" height="200" width="200">-->
-<!--<label class="image-upload-container btn btn-bwm">-->
-<!--    <button (click)="showData()">show data</button>-->
-<!--    <span>Select Image</span>-->
-<!--    <input #imageInput-->
-<!--           type="file"-->
-<!--           accept="image/*"-->
-<!--           (change)="processFile(imageInput)">-->
-<!--</label>-->
 <p-fileUpload name="file-uploader"
               (onSelect)="onUpload($event)"
               accept="image/*">
     <ng-template pTemplate="content">
-        <ul *ngIf="uploadedFiles.length">
-            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-        </ul>
+        <div *ngIf="uploadedFile">
+            {{uploadedFile.name}} - {{uploadedFile.size}} bytes
+        </div>
     </ng-template>
 </p-fileUpload>

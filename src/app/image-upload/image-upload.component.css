@@ -15,5 +15,9 @@ text-align: center;
 
 ::ng-deep .p-fileupload-content{
     height: 100px;
-    border: 2px #AED581 dashed !important;
+    border: 2px #8d88c3  dashed !important;
+}
+
+::ng-deep .p-fileupload-files .ng-star-inserted{
+    margin-top: -2%;
 }
