@@ -1,0 +1,7 @@
+<p-toast></p-toast>
+<div class="progressbar-container">
+    <p-progressBar *ngIf="loadingFinished" [value]="progressValue"></p-progressBar>
+</div>
+<div *ngIf="reports" class="reports-container">
+    <p-tree [value]="reports"></p-tree>
+</div>

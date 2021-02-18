@@ -1,0 +1,19 @@
+::ng-deep .p-fileupload{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 25%;
+}
+
+::ng-deep .p-fileupload p-button{
+display: none;
+}
+
+::ng-deep .p-fileupload-buttonbar{
+text-align: center;
+}
+
+::ng-deep .p-fileupload-content{
+    height: 100px;
+    border: 2px #AED581 dashed !important;
+}
