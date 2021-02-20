@@ -21,14 +21,13 @@ export class ReportCreatorService {
         fileReader.onload = () => {
 
             EXIF.getData(file, () => {
-                const fileTags = EXIF.getAllTags(file)
-                let reportsTree = this.buildNestedReportAsTree(fileTags);
-                this.reports.next(reportsTree);
+                this.reports.next(EXIF.getAllTags(file));
             })
         }
         fileReader.readAsDataURL(file);
     }
 
+    // deprecated
     buildNestedReport(reports) {
 
         let finalReport: report[] = [];
@@ -56,46 +55,5 @@ export class ReportCreatorService {
 
         recurse(reports);
         return finalReport;
-    }
-
-    // todo 2 level children are not included
-    buildNestedReportAsTree(reports) {
-
-        let repAsArray: any[] = [];
-
-        function recurse(reports, current?) {
-            for (const key in reports) {
-                let value = reports[key];
-                if (value != undefined) {
-                    if (value && typeof value === 'object') {
-                        repAsArray.push(
-                            {
-                                label: key,
-                                children: []
-                            }
-                        )
-                        recurse(value, key);
-                    } else {
-                        if (isNaN(Number(key)) && typeof value != 'function') {
-                            if (current) {
-                                let currObj = repAsArray.filter(obj => {
-                                    return obj.label == current
-                                })
-                                currObj[0].children.push({
-                                    label: `${key} - ${value}`
-                                })
-                            }
-                            repAsArray.push(
-                                {
-                                    label: `${key} - ${value}`
-                                }
-                            )
-                        }
-                    }
-                }
-            }
-        }
-        recurse(reports);
-        return repAsArray;
     }
 }
