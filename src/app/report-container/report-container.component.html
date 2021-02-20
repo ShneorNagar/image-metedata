@@ -3,5 +3,5 @@
     <p-progressBar *ngIf="loadingFinished" [value]="progressValue"></p-progressBar>
 </div>
 <div *ngIf="reports" class="reports-container">
-    <p-tree [value]="reports"></p-tree>
+    <p-tree [value]="reports | reportToTree"></p-tree>
 </div>

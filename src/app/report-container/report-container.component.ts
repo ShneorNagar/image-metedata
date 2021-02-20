@@ -17,20 +17,20 @@ export class ReportContainerComponent implements OnInit {
               private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.reportCreatorService.reports.subscribe((reports: TreeNode[])=>{
+    this.reportCreatorService.reports.subscribe((reports: any)=>{
 
       this.loadingFinished = true;
 
       let interval = setInterval(() => {
         this.progressValue = this.progressValue + Math.floor(Math.random() * 35) + 1;
         if (this.progressValue >= 100) {
-          this.progressValue = 100;
-          this.messageService.add({severity: 'info', summary: 'Success', detail: 'Process Completed'});
           clearInterval(interval);
 
           this.loadingFinished = false;
           this.progressValue = 0;
           this.reports = reports;
+
+          this.messageService.add({severity: 'info', summary: 'Success', detail: 'Process Completed'});
         }
       }, 500);
     })
