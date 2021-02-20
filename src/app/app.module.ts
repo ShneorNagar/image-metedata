@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ReportContainerComponent } from './report-container/report-container.component';
-import {ReportItemComponent} from "./report-item/report-item.component";
 import {CardModule} from "primeng/card";
 import {TreeModule} from "primeng/tree";
 import {ProgressBarModule} from "primeng/progressbar";
@@ -22,8 +21,7 @@ import {MessageService} from "primeng/api";
         AppComponent,
         NavBarComponent,
         ImageUploadComponent,
-        ReportContainerComponent,
-        ReportItemComponent
+        ReportContainerComponent
     ],
     imports: [
         BrowserModule,
