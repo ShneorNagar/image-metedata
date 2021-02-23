@@ -15,15 +15,14 @@ import {TreeModule} from "primeng/tree";
 import {ProgressBarModule} from "primeng/progressbar";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
-import {TreeConverterPipe} from "./shared/tree-converter.pipe";
+import {RippleModule} from "primeng/ripple";
 
 @NgModule({
     declarations: [
         AppComponent,
         NavBarComponent,
         ImageUploadComponent,
-        ReportContainerComponent,
-        TreeConverterPipe
+        ReportContainerComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +34,8 @@ import {TreeConverterPipe} from "./shared/tree-converter.pipe";
         CardModule,
         TreeModule,
         ProgressBarModule,
-        ToastModule
+        ToastModule,
+        RippleModule
     ],
     providers: [MessageService],
     bootstrap: [AppComponent]

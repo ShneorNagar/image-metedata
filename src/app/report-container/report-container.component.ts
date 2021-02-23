@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {report, ReportCreatorService} from "../services/report-creator.service";
-import {MessageService, TreeNode} from "primeng/api";
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ReportCreatorService} from "../services/report-creator.service";
+import {DownloadFileService} from "../services/download-file.service";
 
 @Component({
   selector: 'app-report-container',
@@ -9,30 +9,28 @@ import {MessageService, TreeNode} from "primeng/api";
 })
 export class ReportContainerComponent implements OnInit {
 
-  reports :TreeNode[];
-  loadingFinished: boolean = false;
-  progressValue: number = 0;
+  reports :any;
+  @ViewChild('DownloadAsJson')
+  downloadTag: ElementRef;
 
   constructor(private reportCreatorService: ReportCreatorService,
-              private messageService: MessageService) { }
+              private downloadFileService: DownloadFileService) { }
 
   ngOnInit(): void {
     this.reportCreatorService.reports.subscribe((reports: any)=>{
-
-      this.loadingFinished = true;
-
-      let interval = setInterval(() => {
-        this.progressValue = this.progressValue + Math.floor(Math.random() * 35) + 1;
-        if (this.progressValue >= 100) {
-          clearInterval(interval);
-
-          this.loadingFinished = false;
-          this.progressValue = 0;
-          this.reports = reports;
-
-          this.messageService.add({severity: 'info', summary: 'Success', detail: 'Process Completed'});
-        }
-      }, 500);
+      this.reports = reports;
+      reports.MakerNote = {};
     })
+
+  }
+
+  downloadAsJson(DownloadTag: HTMLAnchorElement) {
+    this.downloadFileService.init(DownloadTag);
+    this.downloadFileService.downloadAsJsonFile(this.reports, this.reportCreatorService.fileName);
+  }
+
+  downloadAsTxt(DownloadTag: HTMLAnchorElement){
+    this.downloadFileService.init(DownloadTag);
+    this.downloadFileService.downloadAsTxtFile(this.reports, this.reportCreatorService.fileName)
   }
 }

@@ -12,10 +12,12 @@ export interface report {
 export class ReportCreatorService {
 
     file: any;
+    fileName: string;
     reports: Subject<TreeNode[]> = new Subject<TreeNode[]>();
 
     createReports(file: any) {
         this.file = file;
+        this.fileName = file.name;
 
         const fileReader: FileReader = new FileReader();
         fileReader.onload = () => {
