@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ReportCreatorService} from "../services/report-creator.service";
+import {report, ReportCreatorService} from "../services/report-creator.service";
 import {DownloadFileService} from "../services/download-file.service";
 
 @Component({
@@ -10,27 +10,27 @@ import {DownloadFileService} from "../services/download-file.service";
 export class ReportContainerComponent implements OnInit {
 
   reports :any;
-  @ViewChild('DownloadAsJson')
-  downloadTag: ElementRef;
+  fileName: string;
 
   constructor(private reportCreatorService: ReportCreatorService,
               private downloadFileService: DownloadFileService) { }
 
   ngOnInit(): void {
-    this.reportCreatorService.reports.subscribe((reports: any)=>{
-      this.reports = reports;
-      reports.MakerNote = {};
+    this.reportCreatorService.reports.subscribe((report: report)=>{
+      this.reports = report.metadataObj;
+      this.fileName = report.fileName;
+      report.metadataObj.MakerNote = {};
     })
 
   }
 
   downloadAsJson(DownloadTag: HTMLAnchorElement) {
     this.downloadFileService.init(DownloadTag);
-    this.downloadFileService.downloadAsJsonFile(this.reports, this.reportCreatorService.fileName);
+    this.downloadFileService.downloadAsJsonFile(this.reports, this.fileName);
   }
 
   downloadAsTxt(DownloadTag: HTMLAnchorElement){
     this.downloadFileService.init(DownloadTag);
-    this.downloadFileService.downloadAsTxtFile(this.reports, this.reportCreatorService.fileName)
+    this.downloadFileService.downloadAsTxtFile(this.reports, this.fileName)
   }
 }
