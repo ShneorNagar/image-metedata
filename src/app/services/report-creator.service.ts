@@ -4,56 +4,26 @@ import {Subject} from "rxjs";
 import {TreeNode} from "primeng/api";
 
 export interface report {
-    name: string;
-    value: any;
+    metadataObj: any;
+    fileName: string;
 }
 
 @Injectable({providedIn: "root"})
 export class ReportCreatorService {
 
-    file: any;
-    reports: Subject<TreeNode[]> = new Subject<TreeNode[]>();
+    reports: Subject<report> = new Subject<report>();
 
     createReports(file: any) {
-        this.file = file;
-
         const fileReader: FileReader = new FileReader();
         fileReader.onload = () => {
 
             EXIF.getData(file, () => {
-                this.reports.next(EXIF.getAllTags(file));
+                this.reports.next({
+                    metadataObj: EXIF.getAllTags(file),
+                    fileName: file.name
+                });
             })
         }
         fileReader.readAsDataURL(file);
-    }
-
-    // deprecated
-    buildNestedReport(reports) {
-
-        let finalReport: report[] = [];
-
-        //todo mark parent children
-        function recurse(reports) {
-            for (const key in reports) {
-                let value = reports[key];
-                if (value != undefined) {
-                    if (value && typeof value === 'object') {
-                        recurse(value);
-                    } else {
-                        if (isNaN(Number(key)) && typeof value != 'function') {
-                            finalReport.push(
-                                {
-                                    name: key,
-                                    value: value
-                                }
-                            )
-                        }
-                    }
-                }
-            }
-        }
-
-        recurse(reports);
-        return finalReport;
     }
 }

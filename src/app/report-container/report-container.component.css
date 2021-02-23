@@ -1,3 +1,19 @@
 ::ng-deep .p-progressbar-determinate .p-progressbar-label{
     color: transparent;
 }
+
+.pre-json{
+    color: forestgreen;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: system-ui;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+
+.flex-center a{
+    margin: 0 10px 0 10px;
+}

@@ -1,7 +1,11 @@
-<p-toast></p-toast>
-<div class="progressbar-container">
-    <p-progressBar *ngIf="loadingFinished" [value]="progressValue"></p-progressBar>
-</div>
 <div *ngIf="reports" class="reports-container">
-    <p-tree [value]="reports | reportToTree"></p-tree>
+    <div class="flex-center">
+        <a #DownloadAsJson (click)="downloadAsJson(DownloadAsJson)">
+            <button pButton pRipple type="button" label="Download as json" class="p-button-success"></button>
+        </a>
+        <a #DownloadAsTxt (click)="downloadAsTxt(DownloadAsTxt)">
+            <button pButton pRipple type="button" label="Download as txt" class="p-button-primary"></button>
+        </a>
+    </div>
+    <pre class="pre-json"><span>{{reports | json}}</span></pre>
 </div>
