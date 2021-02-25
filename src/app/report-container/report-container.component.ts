@@ -19,7 +19,6 @@ export class ReportContainerComponent implements OnInit {
     this.reportCreatorService.reports.subscribe((report: report)=>{
       this.reports = report.metadataObj;
       this.fileName = report.fileName;
-      report.metadataObj.MakerNote = {};
     })
 
   }

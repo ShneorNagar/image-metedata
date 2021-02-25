@@ -7,5 +7,5 @@
             <button pButton pRipple type="button" label="Download as txt" class="p-button-primary"></button>
         </a>
     </div>
-    <pre class="pre-json"><span>{{reports | json}}</span></pre>
+    <pre class="pre-json"><span>{{reports | removeCommentsPipe | json}}</span></pre>
 </div>

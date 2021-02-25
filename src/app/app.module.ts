@@ -11,13 +11,15 @@ import { HeaderComponent } from './header/header.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ReportContainerComponent } from './report-container/report-container.component';
 import {MessageService} from "primeng/api";
+import { RemoveCommentsPipePipe } from './shared/report-to-json.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
         ImageUploadComponent,
-        ReportContainerComponent
+        ReportContainerComponent,
+        RemoveCommentsPipePipe
     ],
     imports: [
         BrowserModule,
