@@ -1,11 +1,14 @@
 <div *ngIf="reports" class="reports-container">
     <div class="flex-center">
         <a #DownloadAsJson (click)="downloadAsJson(DownloadAsJson)">
-            <button pButton pRipple type="button" label="Download as json" class="p-button-success"></button>
+            <button pButton type="button" label="Download as json" class="p-button-success"></button>
         </a>
         <a #DownloadAsTxt (click)="downloadAsTxt(DownloadAsTxt)">
-            <button pButton pRipple type="button" label="Download as txt" class="p-button-primary"></button>
+            <button pButton type="button" label="Download as txt" class="p-button-primary"></button>
         </a>
     </div>
-    <pre class="pre-json"><span>{{reports | removeCommentsPipe | json}}</span></pre>
+<!--    <div style="width: 100%;">-->
+<!--        <textarea class="json-textbox" rows="30" cols="100" [value]="reports | removeCommentsPipe"></textarea>-->
+<!--    </div>-->
+    <pre class="pre-json"><span>{{reports | removeCommentsPipe}}</span></pre>
 </div>

@@ -29,18 +29,33 @@ export class RemoveCommentsPipePipe implements PipeTransform {
                         }
                     }
                 } else {
-                    finalReport = {
-                        ...finalReport,
-                        [key]: report[key]
+                    if (!this.isUnicodeValue(report[key])){
+                        finalReport = {
+                            ...finalReport,
+                            [key]: report[key]
+                        }
+                    }
+                    else{
+                        finalReport = {
+                            ...finalReport,
+                            [key]: {}
+                        }
                     }
                 }
             }
         }
-        return finalReport;
+        return JSON.stringify(finalReport, null, 4);
     }
 
     // TODO maybe check random indexes for numbers
     isBinaryValue(value) {
         return Object.keys(value).length > 10 && !isNaN(value[0])
+    }
+
+    isUnicodeValue(value){
+        if (typeof value === 'string'){
+            let a =  value.match(/(.*[\\u\\U0-9])\w+/)
+            return a;
+        }
     }
 }

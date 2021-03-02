@@ -14,12 +14,16 @@ text-align: center;
 }
 
 ::ng-deep .p-fileupload-content{
-    height: 100px;
+    height: 160px;
     border: 2px #8d88c3  dashed !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 ::ng-deep .p-fileupload-files .ng-star-inserted{
     margin-top: -2%;
+    width: 100%;
 }
 
 @media screen and (max-width: 992px) {

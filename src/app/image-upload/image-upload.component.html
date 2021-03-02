@@ -1,4 +1,4 @@
 <p-fileUpload name="file-uploader"
               (onSelect)="onUpload($event)"
-              accept="image/*">
+              accept="image/*" (onRemove)="createPlaceHolder()">
 </p-fileUpload>
