@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import * as EXIF from "exif-js/exif";
+import {AfterViewInit, Component} from '@angular/core';
 import {ReportCreatorService} from "../services/report-creator.service";
 
 @Component({
@@ -23,6 +22,7 @@ export class ImageUploadComponent implements AfterViewInit{
     this.createPlaceHolder();
   }
 
+  // TODO use css classes
   createPlaceHolder() {
     let uploadElement = document.querySelector('.p-fileupload-content');
     const container = document.createElement('div');

@@ -25,12 +25,3 @@ text-align: center;
     margin-top: -2%;
     width: 100%;
 }
-
-@media screen and (max-width: 992px) {
-    ::ng-deep .p-fileupload{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
-    }
-}
