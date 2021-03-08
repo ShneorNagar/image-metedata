@@ -17,29 +17,21 @@ export class RemoveCommentsPipePipe implements PipeTransform {
         for (let key in report) {
             if (report.hasOwnProperty(key)) {
                 if (typeof report[key] === 'object') {
-                    if (!this.isBinaryValue(report[key])){
+                    if (!this.isBinaryValue(report[key])) {
                         finalReport = {
                             ...finalReport,
                             [key]: {...report[key]}
                         }
-                    }else{
+                    } else {
                         finalReport = {
                             ...finalReport,
                             [key]: {}
                         }
                     }
                 } else {
-                    if (!this.isUnicodeValue(report[key])){
-                        finalReport = {
-                            ...finalReport,
-                            [key]: report[key]
-                        }
-                    }
-                    else{
-                        finalReport = {
-                            ...finalReport,
-                            [key]: {}
-                        }
+                    finalReport = {
+                        ...finalReport,
+                        [key]: {}
                     }
                 }
             }
@@ -50,12 +42,5 @@ export class RemoveCommentsPipePipe implements PipeTransform {
     // TODO maybe check random indexes for numbers
     isBinaryValue(value) {
         return Object.keys(value).length > 10 && !isNaN(value[0])
-    }
-
-    isUnicodeValue(value){
-        if (typeof value === 'string'){
-            let a =  value.match(/(.*[\\u\\U0-9])\w+/)
-            return a;
-        }
     }
 }
